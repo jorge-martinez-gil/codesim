@@ -6,7 +6,7 @@ The dataset has been created by Oscar Karnalim: [https://github.com/oscarkarnali
 
 ## Overview
 
-This project implements an innovative approaches to detect similarity in Java source code using unsupervised similarity measures. It aims to identify clones in source code efficiently, offering a valuable tool for software maintenance and plagiarism detection.
+This project implements a collection of established methods for measuring similarity. In this context, the goal is to detect similarity (and subsequently identify code clones) in Java source code using unsupervised similarity measures. It aims to check the most promising unsupervised similarity measures to identify duplicates (a.k.a. clones) in source code efficiently, offering a valuable tool for software maintenance and plagiarism detection.
 
 ## Reference
 
@@ -25,7 +25,7 @@ If you use this work, please cite:
 
 ## How it Works
 
-Each script `java-sim-*-opt.py` processes the Java code snippets from the IR-Plag dataset. There are 21 different methods implemented.
+Each script `java-sim-*-opt.py` processes the Java code snippets from the IR-Plag dataset. There are 21 different methods implemented. Please note that each script tries to find a threshold value for semantic similarity capable of separating clones from non-clones.
 
 
 ## License
