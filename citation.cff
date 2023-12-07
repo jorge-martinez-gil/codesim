@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Source Code Clone Detection Using Unsupervised Similarity Measures"
+authors:
+  - name: "Jorge Martinez-Gil"
+version: "1.0.0"
+date-released: 2023-12-06
+repository-code: "https://github.com/jorge-martinez-gil/codesim"

@@ -1,0 +1,140 @@
+# -*- coding: utf-8 -*-
+"""
+Metrics Similarity Detection for Java Code
+
+[Martinez-Gil2024] J. Martinez-Gil, "Source Code Clone Detection Using Unsupervised Similarity Measures", pp. 1-15 (Under review)
+
+@author: Jorge Martinez-Gil
+"""
+
+import os
+import javalang
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
+
+def calculate_code_metrics(code):
+    tree = javalang.parse.parse(code)
+    code_length = len(code.split('\n'))
+
+    # Calculate cyclomatic complexity (you need to implement this)
+    cyclomatic_complexity = 1
+    
+    # Count the number of variables
+    num_variables = sum(1 for _, node in tree.filter(javalang.tree.VariableDeclarator))
+
+    # Count the number of functions/methods
+    num_functions = sum(1 for _, node in tree.filter(javalang.tree.MethodDeclaration))
+
+    # Count the number of control statements (e.g., if, for, while)
+    num_control_statements = sum(1 for _, node in tree.filter(javalang.tree.IfStatement))
+    num_control_statements += sum(1 for _, node in tree.filter(javalang.tree.ForStatement))
+    num_control_statements += sum(1 for _, node in tree.filter(javalang.tree.WhileStatement))
+    num_control_statements += sum(1 for _, node in tree.filter(javalang.tree.DoStatement))
+
+    return np.array([code_length, cyclomatic_complexity, num_variables, num_functions, num_control_statements])
+
+
+def calculate_code_metrics2(code_snippet):
+    # Count the number of loops (for, while)
+    num_loops = code_snippet.count("for") + code_snippet.count("while")
+    
+    # Count the number of conditionals (if, else, switch)
+    num_conditionals = code_snippet.count("if") + code_snippet.count("else") + code_snippet.count("switch")
+    
+    # Count the number of function/method calls
+    num_function_calls = code_snippet.count("(")
+    
+    # Calculate the depth of nesting using curly braces
+    brace_depth = 0
+    max_brace_depth = 0
+    
+    for char in code_snippet:
+        if char == "{":
+            brace_depth += 1
+            if brace_depth > max_brace_depth:
+                max_brace_depth = brace_depth
+        elif char == "}":
+            brace_depth -= 1
+    
+    # Create a syntax feature vector
+    syntax_vector = [num_loops, num_conditionals, num_function_calls, max_brace_depth]
+    
+    return syntax_vector
+
+
+# Define the path to the IR-Plag-Dataset folder
+dataset_path = os.path.join(os.getcwd(), "IR-Plag-Dataset")
+
+# Define a list of similarity thresholds to iterate over
+similarity_thresholds = [0.98]
+
+# Initialize variables to keep track of the best result
+best_threshold = 0
+best_accuracy = 0
+
+# Loop through each similarity threshold and calculate accuracy
+for SIMILARITY_THRESHOLD in similarity_thresholds:
+    # Initialize the counters
+    total_cases = 0
+    over_threshold_cases_plagiarized = 0
+    over_threshold_cases_non_plagiarized = 0
+    cases_plag = 0
+    cases_non_plag = 0
+
+    # Loop through each subfolder in the dataset
+    for folder_name in os.listdir(dataset_path):
+        folder_path = os.path.join(dataset_path, folder_name)
+        if os.path.isdir(folder_path):
+            # Find the Java file in the original folder
+            original_path = os.path.join(folder_path, 'original')
+            java_files = [f for f in os.listdir(original_path) if f.endswith('.java')]
+            if len(java_files) == 1:
+                java_file = java_files[0]
+                with open(os.path.join(original_path, java_file), 'r') as f:
+                    code1 = f.read()
+                # print(f"Found {java_file} in {original_path} for {folder_name}")
+
+                # Loop through each subfolder in the plagiarized and non-plagiarized folders
+                for subfolder_name in ['plagiarized', 'non-plagiarized']:
+                    subfolder_path = os.path.join(folder_path, subfolder_name)
+                    if os.path.isdir(subfolder_path):
+                        # Loop through each Java file in the subfolder
+                        for root, dirs, files in os.walk(subfolder_path):
+                            for java_file in files:
+                                if java_file.endswith('.java'):
+                                    with open(os.path.join(root, java_file), 'r') as f:
+                                        code2 = f.read()
+                                    # print(f"Found {java_file} in {root} for {folder_name}")
+                                    # Calculate the similarity ratio
+                                    metrics_snippet1 = calculate_code_metrics(code1)
+                                    metrics_snippet2 = calculate_code_metrics(code2)
+                                    # Reshape the metric arrays
+                                    metrics_snippet1 = metrics_snippet1.reshape(1, -1)
+                                    metrics_snippet2 = metrics_snippet2.reshape(1, -1)
+                                    # Calculate cosine similarity between the metric arrays
+                                    #csimilarity_ratio = cosine_similarity(metrics_snippet1, metrics_snippet2)[0][0]
+                                    similarity_ratio = cosine_similarity(metrics_snippet1, metrics_snippet2)[0][0]
+                                    # print(f"{subfolder_name},{similarity_ratio:.6f}")
+
+                                    # Update the counters based on the similarity ratio
+                                    if subfolder_name == 'plagiarized':
+                                        cases_plag += 1
+                                        if similarity_ratio >= SIMILARITY_THRESHOLD:
+                                            over_threshold_cases_plagiarized += 1
+                                    elif subfolder_name == 'non-plagiarized':
+                                        cases_non_plag += 1
+                                        if similarity_ratio < SIMILARITY_THRESHOLD:
+                                            over_threshold_cases_non_plagiarized += 1
+                                    total_cases += 1
+            else:
+                print(f"Error: Found {len(java_files)} Java files in {original_path} for {folder_name}")
+
+    # Calculate accuracy for the current threshold
+    if total_cases > 0:
+        accuracy = (over_threshold_cases_non_plagiarized + over_threshold_cases_plagiarized) / total_cases
+        if accuracy > best_accuracy:
+            best_accuracy = accuracy
+            best_threshold = SIMILARITY_THRESHOLD
+
+# Print the best threshold and accuracy
+print(f"{os.path.basename(__file__)} - The best threshold is {best_threshold} with an accuracy of {best_accuracy:.2f}")
