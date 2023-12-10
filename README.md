@@ -2,6 +2,8 @@
 # Source Code Clone Detection Using Unsupervised Similarity Measures
 This repository contains the source code for reproducing the paper Jorge Martinez-Gil: Source Code Clone Detection Using Unsupervised Similarity Measures. (Currently under review)
 
+The dataset has been created by Oscar Karnalim
+
 ## Overview
 
 This project implements an innovative approaches to detect similarity in Java source code using unsupervised similarity measures. It aims to identify clones in source code efficiently, offering a valuable tool for software maintenance and plagiarism detection.
