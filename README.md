@@ -13,13 +13,12 @@ This project implements a collection of established methods for measuring simila
 If you use this work, please cite:
 
 ```
-@misc{Martinez2024,
-  author = {Jorge Martinez-Gil},
-  title = {Source Code Clone Detection Using Unsupervised Similarity Measures},
-  year = {2024},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/jorge-martinez-gil/codesim}}
+@unpublished{MartinezGilUnpublished,
+    author = {Martinez-Gil, Jorge},
+    title = {Source Code Clone Detection Using Unsupervised Similarity Measures},
+    note = {Manuscript under review},
+    year = {2024},
+	url = {https://github.com/jorge-martinez-gil/codesim}
 }
 ```
 
