@@ -12,13 +12,13 @@ This project implements a collection of established methods for measuring simila
 If you use this work, please cite:
 
 ```
-@unpublished{MartinezGil2024,
-	author = {Jorge Martinez-Gil},
-	title = {Source Code Clone Detection Using Unsupervised Similarity Measures},
-	note = {Accepted for publication},
-	series = {Lecture Notes in Business Information Processing},
-	publisher    = {Springer},
-	year = {2024}
+@misc{martinezgil2024source,
+      title={Source Code Clone Detection Using Unsupervised Similarity Measures}, 
+      author={Jorge Martinez-Gil},
+      year={2024},
+      eprint={2401.09885},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE}
 }
 ```
 
