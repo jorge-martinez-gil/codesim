@@ -1,5 +1,8 @@
 # Source Code Clone Detection Using Unsupervised Similarity Measures
-This repository contains the source code for reproducing the paper *Jorge Martinez-Gil: Source Code Clone Detection Using Unsupervised Similarity Measures (Accepted for publication in Software Quality Days - Springer LNBIP)*.
+This repository contains the source code for reproducing the paper *Martinez-Gil, J. (2024). Source Code Clone Detection Using Unsupervised Similarity Measures. arXiv. https://arxiv.org/abs/2401.09885*.
+
+[![arXiv](https://img.shields.io/badge/arXiv-2401.09885-b31b1b.svg)](https://arxiv.org/abs/2401.09885)
+
 
 The dataset has been created by Oscar Karnalim: [https://github.com/oscarkarnalim/sourcecodeplagiarismdataset](https://github.com/oscarkarnalim/sourcecodeplagiarismdataset)
 
