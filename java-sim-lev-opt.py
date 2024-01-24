@@ -2,7 +2,7 @@
 """
 Levenshtein Similarity Detection for Java Code
 
-[Martinez-Gil2024] J. Martinez-Gil, "Source Code Clone Detection Using Unsupervised Similarity Measures", pp. 1-15 (Under review)
+Martinez-Gil, J. (2024). Source Code Clone Detection Using Unsupervised Similarity Measures. arXiv preprint arXiv:2401.09885.
 
 @author: Jorge Martinez-Gil
 """

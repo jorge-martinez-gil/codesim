@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Main
+
+Martinez-Gil, J. (2024). Source Code Clone Detection Using Unsupervised Similarity Measures. arXiv preprint arXiv:2401.09885.
+
+@author: Jorge Martinez-Gil
+"""
+
 import os
 import subprocess
 import time
