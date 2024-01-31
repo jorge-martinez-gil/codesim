@@ -33,31 +33,29 @@ Each script `java-sim-*-opt.py` processes the Java code snippets from the IR-Pla
 
 | Approach                    | Script                     | Accuracy | Precision | Recall | F-Measure | Execution Time (ms) |
 |-----------------------------|---------------------------|----------|-----------|--------|-----------|-----------------------|
-| Abstract Syntax Tree        | java-sim-ast-opt.py       | 0.77     | 0.77      | 0.78   | 0.78      | 80907.37              |
-| Bag-of-Words                | java-sim-bow-opt.py       | 0.77     | 0.79      | 0.66   | 0.72      | 57444.90              |
-| Bag-of-Words II             | java-sim-bow2-opt.py      | 0.77     | 0.77      | **1.00**   | 0.87      | 59961.69              |
-| CodeBERT                    | java-sim-codebert-opt.py* | 0.54     | 0.75      | 0.34   | 0.47      | 868755.96             |
-| Comment Sim.                | java-sim-comments-opt.py  | 0.77     | 0.77      | **1.00**   | 0.87      | 983231.42             |
-| Output Analysis             | java-sim-exec-opt.py      | **0.94** | 0.85      | 0.97| **0.90**  | 1381335.16            |
-| Function Calls              | java-sim-fcall-opt.py     | 0.78     | 0.78      | 0.91   | 0.84      | 30303.88              |
-| Fuzzy Matching              | java-sim-fuzz-opt.py      | 0.77     | 0.77      | **1.00**   | 0.87      | 12778.62              |
-| Graph Matching              | java-sim-graph-opt.py     | 0.78     | 0.80      | 0.52   | 0.63      | 65076.91              |
-| Rolling Hash                | java-sim-hash-opt.py      | 0.59     | **0.93**  | 0.18   | 0.30      | 959157.60             |
-| Perceptual Hash             | java-sim-image-opt.py     | 0.77     | 0.77      | 0.85   | 0.81      | 38152.71              |
-| Jaccard                     | java-sim-jaccard-opt.py   | 0.86     | 0.81      | 0.94   | 0.87      | **2066.13**               |
-| Longest Common Subsequence  | java-sim-lcs-opt.py       | 0.48     | 0.74      | 0.06   | 0.11      | 7268.67               |
-| Levenshtein         | java-sim-lev-opt.py       | 0.77     | 0.80      | 0.66   | 0.72      | 10280.09              |
-| Metrics comparison          | java-sim-metrics-opt.py   | 0.77     | 0.77      | **1.00**   | 0.87      | 60508.62              |
-| N-Grams                     | java-sim-ngrams-opt.py    | 0.85     | 0.84      | 0.29   | 0.43      | 66635.25              |
-| Program Dependence Graph    | java-sim-pdg-opt.py       | 0.65     | 0.85      | 0.39   | 0.53      | 40518.80              |
-| Rabin-Karp                  | java-sim-rk-opt.py        | 0.81     | 0.79      | 0.99   | 0.88  	| 225218.76             |
-| Semantic Clone              | java-sim-semclone-opt.py  | 0.77     | 0.79      | 0.68   | 0.73      | 41543.53              |
-| Semdiff method              | java-sim-semdiff-opt.py   | 0.77     | 0.79      | 0.38   | 0.51      | 26351.06              |
-| TDF-IDF                     | java-sim-tdf-opt.py       | 0.77     | 0.77      | 0.99   | 0.87      | 68587.17              |
-| Winnow                      | java-sim-winn-opt.py      | 0.86     | 0.81      | 0.98   | 0.88  	| 77160.81              |
-| Winnow II                   | java-sim-winn2-opt.py     | 0.83     | 0.80      | 0.94   | 0.87      | 104032.99             |
-
-
+| **Abstract Syntax Tree**    | `java-sim-ast-opt.py`     | 0.77     | 0.77      | 0.78   | 0.78      | 80907.37              |
+| **Bag-of-Words**            | `java-sim-bow-opt.py`     | 0.77     | 0.79      | 0.66   | 0.72      | 57444.90              |
+| **Bag-of-Words II**         | `java-sim-bow2-opt.py`    | 0.77     | 0.77      | **1.00** | 0.87      | 59961.69              |
+| **CodeBERT**                | `java-sim-codebert-opt.py*`| 0.54     | 0.75      | 0.34   | 0.47      | 868755.96             |
+| **Comment Sim.**            | `java-sim-comments-opt.py` | 0.77     | 0.77      | **1.00** | 0.87      | 983231.42             |
+| **Output Analysis**         | `java-sim-exec-opt.py`    | **0.94** | 0.85      | 0.97   | **0.90**  | 1381335.16            |
+| **Function Calls**          | `java-sim-fcall-opt.py`   | 0.78     | 0.78      | 0.91   | 0.84      | 30303.88              |
+| **Fuzzy Matching**          | `java-sim-fuzz-opt.py`    | 0.77     | 0.77      | **1.00** | 0.87      | 12778.62              |
+| **Graph Matching**          | `java-sim-graph-opt.py`   | 0.78     | 0.80      | 0.52   | 0.63      | 65076.91              |
+| **Rolling Hash**            | `java-sim-hash-opt.py`    | 0.59     | **0.93**  | 0.18   | 0.30      | 959157.60             |
+| **Perceptual Hash**         | `java-sim-image-opt.py`   | 0.77     | 0.77      | 0.85   | 0.81      | 38152.71              |
+| **Jaccard**                 | `java-sim-jaccard-opt.py` | 0.86     | 0.81      | 0.94   | 0.87      | **2066.13**           |
+| **Longest Common Subsequence** | `java-sim-lcs-opt.py`  | 0.48     | 0.74      | 0.06   | 0.11      | 7268.67               |
+| **Levenshtein**             | `java-sim-lev-opt.py`     | 0.77     | 0.80      | 0.66   | 0.72      | 10280.09              |
+| **Metrics comparison**      | `java-sim-metrics-opt.py` | 0.77     | 0.77      | **1.00** | 0.87      | 60508.62              |
+| **N-Grams**                 | `java-sim-ngrams-opt.py`  | 0.85     | 0.84      | 0.29   | 0.43      | 66635.25              |
+| **Program Dependence Graph** | `java-sim-pdg-opt.py`   | 0.65     | 0.85      | 0.39   | 0.53      | 40518.80              |
+| **Rabin-Karp**              | `java-sim-rk-opt.py`      | 0.81     | 0.79      | 0.99   | 0.88      | 225218.76             |
+| **Semantic Clone**          | `java-sim-semclone-opt.py`| 0.77     | 0.79      | 0.68   | 0.73      | 41543.53              |
+| **Semdiff method**          | `java-sim-semdiff-opt.py` | 0.77     | 0.79      | 0.38   | 0.51      | 26351.06              |
+| **TDF-IDF**                 | `java-sim-tdf-opt.py`     | 0.77     | 0.77      | 0.99   | 0.87      | 68587.17              |
+| **Winnow**                  | `java-sim-winn-opt.py`    | 0.86     | 0.81      | 0.98   | 0.88      | 77160.81              |
+| **Winnow II**               | `java-sim-winn2-opt.py`   | 0.83     | 0.80      | 0.94   | 0.87      | 104032.99             |
 
 
 *CodeBERT is used without recalibration
