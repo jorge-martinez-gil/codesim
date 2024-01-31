@@ -35,19 +35,19 @@ Each script `java-sim-*-opt.py` processes the Java code snippets from the IR-Pla
 |---------------------------|----------|-----------|--------|-----------|-----------------------|
 | java-sim-ast-opt.py       | 0.77     | 0.77      | 0.78   | 0.78      | 80907.37              |
 | java-sim-bow-opt.py       | 0.77     | 0.79      | 0.66   | 0.72      | 57444.90              |
-| java-sim-bow2-opt.py      | 0.77     | 0.77      | 1.00   | 0.87      | 59961.69              |
+| java-sim-bow2-opt.py      | 0.77     | 0.77      | **1.00**   | 0.87      | 59961.69              |
 | java-sim-codebert-opt.py* | 0.54     | 0.75      | 0.34   | 0.47      | 868755.96             |
-| java-sim-comments-opt.py  | 0.77     | 0.77      | 1.00   | 0.87      | 983231.42             |
-| java-sim-exec-opt.py      | **0.94** | 0.85      | **0.97**| **0.90**  | 1381335.16            |
+| java-sim-comments-opt.py  | 0.77     | 0.77      | **1.00**   | 0.87      | 983231.42             |
+| java-sim-exec-opt.py      | **0.94** | 0.85      | 0.97| **0.90**  | 1381335.16            |
 | java-sim-fcall-opt.py     | 0.78     | 0.78      | 0.91   | 0.84      | 30303.88              |
-| java-sim-fuzz-opt.py      | 0.77     | 0.77      | 1.00   | 0.87      | 12778.62              |
+| java-sim-fuzz-opt.py      | 0.77     | 0.77      | **1.00**   | 0.87      | 12778.62              |
 | java-sim-graph-opt.py     | 0.78     | 0.80      | 0.52   | 0.63      | 65076.91              |
 | java-sim-hash-opt.py      | 0.59     | **0.93**  | 0.18   | 0.30      | 959157.60             |
 | java-sim-image-opt.py     | 0.77     | 0.77      | 0.85   | 0.81      | 38152.71              |
 | java-sim-jaccard-opt.py   | 0.86     | 0.81      | 0.94   | 0.87      | **2066.13**               |
 | java-sim-lcs-opt.py       | 0.48     | 0.74      | 0.06   | 0.11      | 7268.67               |
 | java-sim-lev-opt.py       | 0.77     | 0.80      | 0.66   | 0.72      | 10280.09              |
-| java-sim-metrics-opt.py   | 0.77     | 0.77      | 1.00   | 0.87      | 60508.62              |
+| java-sim-metrics-opt.py   | 0.77     | 0.77      | **1.00**   | 0.87      | 60508.62              |
 | java-sim-ngrams-opt.py    | 0.85     | 0.84      | 0.29   | 0.43      | 66635.25              |
 | java-sim-pdg-opt.py       | 0.65     | 0.85      | 0.39   | 0.53      | 40518.80              |
 | java-sim-rk-opt.py        | 0.81     | 0.79      | 0.99   | 0.88  	| 225218.76             |
