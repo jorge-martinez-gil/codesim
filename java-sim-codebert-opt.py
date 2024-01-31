@@ -36,6 +36,10 @@ dataset_path = os.path.join(os.getcwd(), "IR-Plag-Dataset")
 # Define the similarity threshold
 SIMILARITY_THRESHOLD = 0.9906
 
+# Initialize variables to keep track of the best result
+best_threshold = 0
+best_accuracy = 0
+
 # Initialize the counters
 total_cases = 0
 over_threshold_cases_plagiarized = 0
@@ -43,6 +47,11 @@ over_threshold_cases_non_plagiarized = 0
 
 cases_plag = 0
 cases_non_plag = 0
+
+# Initialize counters
+TP = 0
+FP = 0
+FN = 0
 
 # Loop through each subfolder in the dataset
 for folder_name in os.listdir(dataset_path):
@@ -86,16 +95,46 @@ for folder_name in os.listdir(dataset_path):
                                     if similarity_ratio <= SIMILARITY_THRESHOLD:
                                         over_threshold_cases_non_plagiarized += 1
                                 total_cases += 1
+                                # Update the counters based on the similarity ratio
+                                if subfolder_name == 'plagiarized':
+                                    cases_plag += 1
+                                    if similarity_ratio >= SIMILARITY_THRESHOLD:
+                                        TP += 1  # True positive: plagiarized and identified as plagiarized
+                                    else:
+                                        FN += 1  # False negative: plagiarized but identified as non-plagiarized
+                                elif subfolder_name == 'non-plagiarized':
+                                    cases_non_plag += 1
+                                    if similarity_ratio <= SIMILARITY_THRESHOLD:
+                                        over_threshold_cases_non_plagiarized += 1
+                                    else:
+                                        FP += 1  # False positive: non-plagiarized but identified as plagiarized
+
         else:
             print(f"Error: Found {len(java_files)} Java files in {original_path} for {folder_name}")
 
-# Calculate the proportion of cases over the threshold for plagiarized and non-plagiarized cases separately
+# Calculate accuracy for the current threshold
 if total_cases > 0:
-    proportion_plagiarized = over_threshold_cases_plagiarized / cases_plag
-    proportion_non_plagiarized = over_threshold_cases_non_plagiarized / cases_non_plag
-    total = (over_threshold_cases_non_plagiarized + over_threshold_cases_plagiarized) / total_cases
-    #print(f"The success when assessing plagiarism cases is {proportion_plagiarized:.2f} of a total of {cases_plag} cases")
-    #print(f"The success when assessing non-plagiarism cases is {proportion_non_plagiarized:.2f} of a total of {cases_non_plag} cases")
-    print(f"{os.path.basename(__file__)} - The accuracy is {total:.2f}")
+    accuracy = (over_threshold_cases_non_plagiarized + over_threshold_cases_plagiarized) / total_cases
+    if accuracy > best_accuracy:
+        best_accuracy = accuracy
+        best_threshold = SIMILARITY_THRESHOLD
+
+# Calculate precision and recall
+if TP + FP > 0:
+    precision = TP / (TP + FP)
 else:
-    print("Error: No cases found")
+    precision = 0
+
+if TP + FN > 0:
+    recall = TP / (TP + FN)
+else:
+    recall = 0
+
+# Calculate F-measure
+if precision + recall > 0:
+    f_measure = 2 * (precision * recall) / (precision + recall)
+else:
+    f_measure = 0
+
+# Print the best threshold and accuracy
+print(f"{os.path.basename(__file__)} - The best threshold is {best_threshold} with an accuracy of {best_accuracy:.2f}, Precision: {precision:.2f}, Recall: {recall:.2f}, F-measure: {f_measure:.2f}")

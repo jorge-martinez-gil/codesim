@@ -20,6 +20,11 @@ similarity_thresholds = [0.1, 0.3, 0.6]
 best_threshold = 0
 best_accuracy = 0
 
+# Initialize counters
+TP = 0
+FP = 0
+FN = 0
+
 # Loop through each similarity threshold and calculate accuracy
 for SIMILARITY_THRESHOLD in similarity_thresholds:
     # Initialize the counters
@@ -68,6 +73,19 @@ for SIMILARITY_THRESHOLD in similarity_thresholds:
                                         if similarity_ratio <= SIMILARITY_THRESHOLD:
                                             over_threshold_cases_non_plagiarized += 1
                                     total_cases += 1
+                                    # Update the counters based on the similarity ratio
+                                    if subfolder_name == 'plagiarized':
+                                        cases_plag += 1
+                                        if similarity_ratio >= SIMILARITY_THRESHOLD:
+                                            TP += 1  # True positive: plagiarized and identified as plagiarized
+                                        else:
+                                            FN += 1  # False negative: plagiarized but identified as non-plagiarized
+                                    elif subfolder_name == 'non-plagiarized':
+                                        cases_non_plag += 1
+                                        if similarity_ratio <= SIMILARITY_THRESHOLD:
+                                            over_threshold_cases_non_plagiarized += 1
+                                        else:
+                                            FP += 1  # False positive: non-plagiarized but identified as plagiarized
             else:
                 print(f"Error: Found {len(java_files)} Java files in {original_path} for {folder_name}")
 
@@ -78,5 +96,22 @@ for SIMILARITY_THRESHOLD in similarity_thresholds:
             best_accuracy = accuracy
             best_threshold = SIMILARITY_THRESHOLD
 
+    # Calculate precision and recall
+    if TP + FP > 0:
+        precision = TP / (TP + FP)
+    else:
+        precision = 0
+
+    if TP + FN > 0:
+        recall = TP / (TP + FN)
+    else:
+        recall = 0
+
+    # Calculate F-measure
+    if precision + recall > 0:
+        f_measure = 2 * (precision * recall) / (precision + recall)
+    else:
+        f_measure = 0
+
 # Print the best threshold and accuracy
-print(f"{os.path.basename(__file__)} - The best threshold is {best_threshold} with an accuracy of {best_accuracy:.2f}")
+print(f"{os.path.basename(__file__)} - The best threshold is {best_threshold} with an accuracy of {best_accuracy:.2f}, Precision: {precision:.2f}, Recall: {recall:.2f}, F-measure: {f_measure:.2f}")
