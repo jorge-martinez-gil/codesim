@@ -15,13 +15,19 @@ This project implements a collection of established methods for measuring simila
 If you use this work, please cite:
 
 ```
-@misc{martinezgil2024source,
-      title={Source Code Clone Detection Using Unsupervised Similarity Measures}, 
-      author={Jorge Martinez-Gil},
-      year={2024},
-      eprint={2401.09885},
-      archivePrefix={arXiv},
-      primaryClass={cs.SE}
+@InProceedings{10.1007/978-3-031-56281-5_2,
+	author="Martinez-Gil, Jorge",
+	editor="Bludau, Peter
+	and Ramler, Rudolf
+	and Winkler, Dietmar
+	and Bergsmann, Johannes",
+	title="Source Code Clone Detection Using Unsupervised Similarity Measures",
+	booktitle="Software Quality as a Foundation for Security",
+	year="2024",
+	publisher="Springer Nature Switzerland",
+	address="Cham",
+	pages="21--37",
+	isbn="978-3-031-56281-5"
 }
 ```
 
