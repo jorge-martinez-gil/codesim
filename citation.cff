@@ -13,7 +13,7 @@ abstract: "This chapter presents a comparative analysis of unsupervised similari
 publisher:
   name: "Springer, Cham"
   location: "Cham, Switzerland"
-type: "inproceedings"
+type: "conference-paper"
 booktitle: "Software Quality as a Foundation for Security (Lecture Notes in Business Information Processing, vol. 505)"
 editors:
   - family-names: "Bludau"
