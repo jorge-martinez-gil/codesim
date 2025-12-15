@@ -1,8 +1,29 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+message: "If you use this work, please cite it as below."
 title: "Source Code Clone Detection Using Unsupervised Similarity Measures"
 authors:
-  - name: "Jorge Martinez-Gil"
-version: "1.0.0"
-date-released: 2023-12-06
-repository-code: "https://github.com/jorge-martinez-gil/codesim"
+  - family-names: "Martinez-Gil"
+    given-names: "Jorge"
+    orcid: "https://orcid.org/0000-0002-5730-7965"
+date-released: "2024-04-12"
+version: "1"
+doi: "10.1007/978-3-031-56281-5_2"
+url: "https://doi.org/10.1007/978-3-031-56281-5_2"
+abstract: "This chapter presents a comparative analysis of unsupervised similarity measures for code clone detection, covering their strengths and weaknesses and how they perform on benchmark datasets."
+publisher:
+  name: "Springer, Cham"
+  location: "Cham, Switzerland"
+type: "chapter"
+booktitle: "Software Quality as a Foundation for Security (Lecture Notes in Business Information Processing, vol. 505)"
+editors:
+  - family-names: "Bludau"
+    given-names: "Peter"
+  - family-names: "Ramler"
+    given-names: "Rudolf"
+  - family-names: "Winkler"
+    given-names: "Dietmar"
+  - family-names: "Bergsmann"
+    given-names: "Johannes"
+isbn:
+  - "978-3-031-56280-8"
+  - "978-3-031-56281-5"
