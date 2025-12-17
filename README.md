@@ -503,12 +503,6 @@ def scalable_clone_detection(files):
 
 ## 📚 Additional Resources
 
-### Related Work
-
-- [BigCloneBench](https://github.com/clonebench/BigCloneBench) - Large-scale clone benchmark
-- [SourcererCC](https://github.com/Mondego/SourcererCC) - Token-based clone detection
-- [CCFinderX](https://github.com/YoshikiHigo/CCFinderX) - Token-based clone detector
-
 ## 📝 Citation
 
 If you use CodeSim in your research, please cite:
@@ -528,10 +522,6 @@ If you use CodeSim in your research, please cite:
 }
 ```
 
-### Citation File
-
-This repository includes a `citation.cff` file for easy citation. On GitHub, click "Cite this repository" button for formatted citations.
-
 ## 📄 License
 
 This project is licensed under the MIT License.
@@ -543,13 +533,3 @@ This project is licensed under the MIT License.
 - **Institution**: Software Competence Center Hagenberg (SCCH)
 - **Conference**: SWQD 2024 organizers and reviewers
 - **Community**: All contributors and users of this project
-
-## 📧 Contact
-
-**Jorge Martinez-Gil, PhD**
-
-- 🌐 Website: [jorgemar.com](https://www.jorgemar.com)
-- 📧 Email: jorgemarcc@gmail.com
-- 💼 LinkedIn: [Jorge Martinez-Gil](https://www.linkedin.com/in/jorgemartinezgil/)
-- 🎓 ORCID: [0000-0002-5730-7965](https://orcid.org/0000-0002-5730-7965)
-- 🔬 ResearchGate: [Jorge Martinez-Gil](https://www.researchgate.net/profile/Jorge-Martinez-Gil-3)
